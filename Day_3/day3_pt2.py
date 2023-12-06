@@ -9,7 +9,7 @@ ROWS = len(engine_schematic)
 ADJ_DIRS = ((-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1))
 
 # Mapping of location of an asterisk to its status as a gear and gear ratio
-gear_to_ratio = dict() # (i, j) -> (False | True, gear ratio)
+gear_to_ratio = dict() # (i, j) -> [False | True, gear ratio]
 
 # Update gear_to_ratio mapping based on engine schematic
 for i, line in enumerate(engine_schematic):
@@ -37,7 +37,7 @@ for i, line in enumerate(engine_schematic):
 
         # Update asterisk status and gear ratio for all asterisks found adjacent to the part number
         for asterisk_location in asterisk_locations:
-            if asterisk_location not in gear_to_ratio:
+            if asterisk_location not in gear_to_ratio.keys():
                 gear_to_ratio[asterisk_location] = [False, part_num]
             else:
                 gear_to_ratio[asterisk_location][0] = True
