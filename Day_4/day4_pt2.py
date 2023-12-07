@@ -35,4 +35,7 @@ for scratchcard in scratch_cards:
     for i in range(1, num_wins + 1):
         card_id_to_num_copies[card_id + i] += card_id_to_num_copies[card_id]
 
+    # Processed cards no longer needed for future calculations
+    del card_id_to_num_copies[card_id]
+
 print(total_scratchcards) # My puzzle answer: 6874754
